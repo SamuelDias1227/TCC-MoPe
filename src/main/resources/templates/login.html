@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>MoPe Login</title>
+	<div th:replace="fragments/links-referencia-hehe :: links"></div>
+
+	<style>
+		.mensagem {
+			color: red;
+		}
+	</style>
+</head>
+
+<body class="aoRedor">
+
+	<div class="loginMain">
+
+		<div class="msgInteiro">
+			<div class="alert alert-danger alert-dismissible fade show msgErro" th:if="${param.error}">
+				<button type="button" class="xPraSair bi bi-x" data-bs-dismiss="alert"></button>
+				<span>Senha ou email inválido</span>
+			</div>
+		</div>
+		
+		<form class="fundoSlk" th:action="@{/login}" method="post">
+			<p class="tituloLogin">Login</p>
+
+			<div class="opLogin">
+				<div class="labelLogin">
+					<i class="iconesPerfil bi bi-envelope-at"></i>
+					<input class="labelLogin form-control" placeholder="Email" name="username" type="email">
+				</div>
+			</div>
+
+			<div class="opLogin">
+				<div class="labelLogin">
+					<img class="cadeado" src="/resto/imagens/lock.png">
+					<i class="iconesPerfil"></i>
+					<input class="labelLogin form-control" placeholder="Senha" type="password"
+						name="password">
+						
+				</div>
+			</div>
+
+			<div class="botoes">
+				<input class="btn verdola btn" type="submit" value="Entrar" />
+			</div>
+
+
+			<div class="loginFooter">
+				<div class="loginFooterTexto">
+					Ainda não tem conta?
+				</div>
+				<a class="btn botaoLogin btn-secondary" type="button" href="/">Cadastrar</a>
+			</div>
+
+		</form>
+	</div>
+
+</body>

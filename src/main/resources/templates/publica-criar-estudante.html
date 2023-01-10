@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Cadastro Estudante</title>
+
+	<div th:replace="fragments/links-referencia-hehe :: links"></div>
+
+</head>
+
+<style>
+	.mensagem {
+		color: red;
+	}
+</style>
+</head>
+
+<body>
+
+	<body class="mainCadastro">
+
+		<div class="parteVerde">
+			<div class="ifLogoDiv">
+				<img class="ifLogo" src="/resto/imagens/ifmsLogo.png">
+			</div>
+			<div class="tituloParteVerde">Bem Vindo de Volta!</div>
+			<div class="botaoLogin">
+				<a type="button" class="btnRedundancia btnEntrar btn btn-light" href="/login">Entrar</a>
+			</div>
+
+		</div>
+
+
+		<div class="parteBranca">
+			<div class="solDiv">
+				<img class="solImg" src="/resto/imagens/sol.png">
+			</div>
+
+			<div class="tituloParteBranca">Cadastro Estudante</div>
+
+			<div class="cad">
+
+				<div class="msgInteiro">
+					<div class="alert alert-success alert-dismissible fade show msgErro" th:if="${mensagem}">
+						<button type="button" class="xPraSair bi bi-x" data-bs-dismiss="alert"></button>
+						<span th:text="${mensagem}"></span>
+					</div>
+				</div>
+
+				<form action="#" th:action="@{/estudante/salvar}" th:object="${estudante}" method="post">
+
+					<div class="row mb-3">
+						<div class="formEdicao labelLogin">
+							<i class="iconesPerfil bi bi-123"></i> <input class="formEdicao labelLogin form-control"
+								placeholder="RA" type="text" th:field="*{ra}">
+						</div>
+
+						<span class="mensagem" th:if="${#fields.hasErrors('ra')}" th:errors="*{ra}"></span>
+
+					</div>
+
+					<div class="row mb-3">
+						<div class="formEdicao labelLogin">
+							<i class="iconesPerfil bi bi-person"></i> <input class="formEdicao labelLogin form-control"
+								placeholder="Nome" type="text" th:field="*{nome}">
+						</div>
+
+					</div>
+
+					<span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+
+					<div class="row mb-3">
+						<div class="formEdicao labelLogin">
+							<i class="iconesPerfil bi bi-envelope-at"></i>
+							<input class="formEdicao labelLogin form-control" placeholder="Email" type="email"
+								th:field="*{email}">
+						</div>
+
+					</div>
+					<span class="mensagem" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span> <span
+						class="mensagem" th:if="${emailExiste}" th:text="${emailExiste}"></span>
+
+					<div class="row mb-3">
+						<div class="formEdicao labelLogin">
+							<i class="iconesPerfil bi bi-book"></i>
+							<input class="formEdicao labelLogin form-control" placeholder="Turma" value="#" type="text"
+								th:field="*{turma}">
+						</div>
+					</div>
+
+					<span class="mensagem" th:if="${#fields.hasErrors('turma')}" th:errors="*{turma}"></span>
+
+					<div class="row mb-3">
+						<div class="formEdicao labelLogin">
+							<img class="cadeado" src="/resto/imagens/lock.png">
+							<i class="iconesPerfil "></i>
+							<input class="formEdicao labelLogin form-control" placeholder="Senha" type="password"
+								th:field="*{senha}">
+						</div>
+					</div>
+					<div class="msgErro">
+						<span class="mensagem" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
+					</div>
+
+
+					<div class="botoes">
+						<a type="button" class="cinzinha btn btn-secondary" href="/">Cancelar</a>
+						<input class="btn verdola btn" type="submit" value="Cadastrar" />
+
+					</div>
+				</form>
+
+			</div>
+
+
+
+
+		</div>
+
+
+
+	</body>
+
+	<script src="/resto/hehe.js"></script>
+
+</html>

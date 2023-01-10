@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang=”pt-br” xmlns:th="http://www.thymeleaf.org">
+<title>Listar de presenças</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div th:replace="fragments/links-referencia-hehe :: links"></div>
+
+<body>
+	<div th:replace="fragments/navbar-hehe :: navbar"></div>
+	<div class="container" id="main">
+		<div class="mainDentroMainHorario">
+
+			<div th:if="${ #authorization.expression('hasAuthority(''PROFESSOR'')')}" class="">
+				<div class="primeiraLinhaCriarHorario">
+					<h1 class="tituloCriarHorario">Presenças confirmadas em suas permanências</h1>
+					<a class="voltarHorario bi bi-arrow-left-square"
+						th:href="@{/disciplina/teacher/listar/{idLog}(idLog=${#authentication.getPrincipal().getId()})}"></a>
+				</div>
+
+				<div class="divAntesTabela">
+					<table class="tabelaHorarios table table-borderless">
+						<thead class="thead border">
+							<tr>
+								<th class="tituloTabela">Confimar que foi</th>
+								<th class="tituloTabela">Presente?</th>
+								<th class="tituloTabela">Permanência</th>
+								<th class="tituloTabela">Estudante</th>
+								<th class="tituloTabela">Professor</th>
+								<th colspan="2" class="tituloTabela">Data</th>
+							</tr>
+						</thead>
+						<tbody class="tbody border">
+							<tr th:if="${presencas.empty}">
+								<td colspan="5">Nenhum presença confirmada</td>
+							</tr>
+							<tr th:each="presenca : ${presencas}">
+								<td>
+									<a id="checar" class="bi bi-check2"
+										th:href="@{/presenca/teacher/confirmarPresenca/{idPresenca}/{idLog}(idPresenca=${presenca.id}, idLog=${#authentication.getPrincipal().getId()})}"
+										th:data-confirm-delete="|Você gostaria de confirmar que o aluno ${presenca.estudante.nome} foi na permanência com horario que vai das ${presenca.horario.horarioInicio} às ${presenca.horario.horarioFinal}?|"
+										onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
+									</a>
+								</td>
+								<td><span class="classeSpan" th:text="${presenca.confirmacao}"> Presenca </span>
+								</td>
+								<td><span class="classeSpan" th:text="${presenca.horario.horarioInicio}"> Horário de
+										inicio </span></td>
+								<td><span class="classeSpan" th:text="${presenca.estudante.nome}"> Estudante </span>
+								</td>
+								<td><span class="classeSpan" th:text="${presenca.professor.nome}"> Professor </span>
+								</td>
+								<td><span class="classeSpan" th:text="${#dates.format(presenca.data, 'dd/MM/yyyy')}">
+										Data </span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div th:if="${ #authorization.expression('hasAuthority(''ESTUDANTE'')')}" class="">
+				<div class="primeiraLinhaCriarHorario">
+					<h1 class="tituloCriarHorario">Presenças confirmadas em suas monitorias</h1>
+					<a class="voltarHorario bi bi-arrow-left-square"
+						th:href="@{/disciplina/teacher/listar/{idLog}(idLog=${#authentication.getPrincipal().getId()})}"></a>
+				</div>
+
+				<div class="divAntesTabela">
+					<div class="ficarNoMeio">
+						<table class="tabelaHorarios table table-borderless">
+							<thead class="thead border">
+								<tr>
+									<th class="tituloTabela">Confimar que foi</th>
+									<th class="tituloTabela">Presente?</th>
+									<th class="tituloTabela">Monitoria</th>
+									<th class="tituloTabela">Estudante</th>
+									<th class="tituloTabela">Monitor</th>
+									<th colspan="2" class="tituloTabela">Data</th>
+								</tr>
+							</thead>
+							<tbody class="tbody border">
+								<tr th:if="${presencas.empty}">
+									<td colspan="5">Nenhum presença confirmada</td>
+								</tr>
+								<tr th:each="presenca : ${presencas}">
+									<td>
+										<a id="checar" class="bi bi-check2"
+											th:href="@{/presenca/teacher/confirmarPresenca/{idPresenca}/{idLog}(idPresenca=${presenca.id}, idLog=${#authentication.getPrincipal().getId()})}"
+											th:data-confirm-delete="|Você gostaria de confirmar que o aluno ${presenca.estudante.nome} foi na permanência com horario que vai das ${presenca.horario.horarioInicio} às ${presenca.horario.horarioFinal}?|"
+											onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
+										</a>
+									</td>
+									<td><span class="classeSpan confirmacaoTrueOrFalse"
+											th:text="${presenca.confirmacao}"> Presenca </span>
+									</td>
+									<td><span class="classeSpan" th:text="${presenca.horario.horarioInicio}"> Horário de
+											inicio </span></td>
+									<td><span class="classeSpan" th:text="${presenca.estudante.nome}"> Estudante </span>
+									</td>
+									<td><span class="classeSpan" th:text="${presenca.monitor.estudante.nome}"> Monitor </span>
+									</td>
+									<td><span class="classeSpan"
+											th:text="${#dates.format(presenca.data, 'dd/MM/yyyy')}">
+											Data </span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+<script src="/resto/hehe.js"></script>
+
+</html>

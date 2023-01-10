@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<nav th:fragment="nav"
+		class="navbar navbar-expand-sm navbar-light bg-light">
+		<div class="container-fluid">
+			<a href="#" class="navbar-brand">SistemaIF</a>
+			<button type="button" class="navbar-toggler"
+				data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div id="navbarCollapse" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="/estudante/admin/listar"
+						class="nav-link">Listar estudantes</a></li>
+					<li class="nav-item"><a href="/professor/admin/listar"
+						class="nav-link">Listar professores</a></li>
+					<li class="nav-item"><a href="/disciplina/admin/listar"
+						class="nav-link">Listar disciplinas</a></li>
+					<li class="nav-item"><a href="/horario/admin/listar"
+						class="nav-link">Listar horarios</a></li>
+				</ul>
+				<ul th:replace="auth/auth-nav :: nav">
+				</ul>
+				<!-- adicionado -->
+
+			</div>
+		</div>
+	</nav>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang=”pt-br” xmlns:th="http://www.thymeleaf.org">
+<title>Estudantes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="/resto/fontes.css">
+<link rel="stylesheet" href="/resto/style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<body>
+
+	<div class="navBarHehe">
+
+		<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display: none" id="mySidebar">
+			<button class="botaoMenuFechar" onclick="w3_close()">&times;</button>
+			<a href="#" class="w3-bar-item w3-button">Link 1</a> <a href="#" class="w3-bar-item w3-button">Link 2</a> <a
+				href="#" class="w3-bar-item w3-button">Link 3</a>
+		</div>
+
+		<div class="mesmaLinha">
+			<button id="openNav" class="botaoMenu" onclick="w3_open()">
+				<img class="imagemBM" src="/resto/imagens/menu.png">
+			</button>
+			<div class="logo-container">
+				<img class="logoImg" src="/resto/imagens/camel.png">
+				<h1 class="titulo">MoPe</h1>
+			</div>
+			<div class="icones">	
+				<i onclick="perfil()" class="iconesClicaveis bi bi-person"></i>
+				<i class="iconesClicaveis bi bi-gear"></i>
+			</div>
+		</div>
+
+	</div>
+
+
+
+	<div id="main">
+		<div class="mainDentroMain">
+
+			<br>
+			<div class="tituloMain">Permanências e Monitorias da (Matéria)</div><br>
+
+			<div class="linha1">
+
+				<div class="setasContainer">
+					<i onclick="history.back()" class="iconesClicaveis seta esquerda bi bi-arrow-left-square"></i>
+					<i onclick="history.forward()" class="iconesClicaveis seta direita bi bi-arrow-right-square"></i>
+				</div>
+
+				<div class="parte2">
+					<form class="barraPesquisa">
+						<input class="form-control input-color" type="search" placeholder="Pesquisar"
+							aria-label="Pesquisar">
+						<svg class="inputBotaoPesquisa" xmlns="http://www.w3.org/2000/svg" width="32" height="34"
+							fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+							<path
+								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+						</svg>
+					</form>
+					<select class="filtro" aria-label="Filtro">
+						<option value="1">Sem filtro</option>
+						<option value="2">Profesores</option>
+						<option value="3">Monitores</option>
+						<option value="4">vish</option>
+					</select>
+				</div>
+
+			</div>
+
+			<br>
+
+			<div>
+
+				<div class="informacoes">
+
+					<div class="dia">
+						Segunda-Feira
+					</div>
+					<div class="hora">
+						13:00 - 14:30
+					</div>
+					<div class="local">
+						Sala: A203
+					</div>
+					<div class="ministrante">
+						Prof. José Cláudio
+					</div>
+					<div class="confirmacao">
+						<i class="bi bi-check2-circle"></i>
+					</div>
+
+				</div>
+
+				<div class="informacoes">
+
+					<div class="dia">
+						Terça-Feira
+					</div>
+					<div class="hora">
+						15:00 - 16:30
+					</div>
+					<div class="local">
+						Sala: B203
+					</div>
+					<div class="ministrante">
+						Prof. Samuel Dias
+					</div>
+					<div class="confirmacao">
+						<i class="bi bi-check2-circle"></i>
+					</div>
+
+				</div>
+
+				<div class="informacoes">
+
+					<div class="dia">
+						Quarta-Feira
+					</div>
+					<div class="hora">
+						09:00 - 09:30
+					</div>
+					<div class="local">
+						Sala: C203
+					</div>
+					<div class="ministrante">
+						Isaque Nunes
+					</div>
+					<div class="confirmacao">
+						<i class="bi bi-check2-circle"></i>
+					</div>
+
+				</div>
+
+				<div class="informacoes">
+
+					<div class="dia">
+						Sexta-Feira
+					</div>
+					<div class="hora">
+						23:00 - 01:30
+					</div>
+					<div class="local">
+						Sala: Em casa
+					</div>
+					<div class="ministrante">
+						Rafael Veiga
+					</div>
+					<div class="confirmacao">
+						<i class="bi bi-check2-circle"></i>
+					</div>
+
+				</div>
+
+				<div class="informacoes">
+
+					<div class="dia">
+						Segunda-Feira
+					</div>
+					<div class="hora">
+						13:13 - 22:22
+					</div>
+					<div class="local">
+						Sala: Todo lugar
+					</div>
+					<div class="ministrante">
+						Pres. Bolsonaro
+					</div>
+					<div class="confirmacao">
+						<i class="bi bi-check2-circle"></i>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	</div>
+
+	<div id="footer">
+        <div class="agradecimento">
+            <img class="copyrightIcon" src="/resto/imagens/copyright.png">
+            Feito por José & Samuel
+        </div>
+        <!-- href="https://github.com/JoseCLC" href="https://github.com/SamuelDias1227" -->
+
+        <div class="divulgacao">
+
+            <div>
+                <div class="pessoa">
+                    <h5 class="nome">José</h2>
+                </div>
+                <div class="linksDentro">
+                    <a href="https://github.com/JoseCLC" class="iconeLink gitHubb bi bi-github"></a>
+                    <a href="https://gitlab.com/JoseClima"> <img class="iconeLink" src="/resto/imagens/gitlab.png"> </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="pessoa">
+                    <h5 class="nome">Samuel</h2>
+                </div>
+                <div class="linksDentro">
+                    <a href="https://github.com/SamuelDias1227" class="iconeLink gitHubb bi bi-github"></a>
+                    <a href="https://gitlab.com/SamuelDias1227"> <img class="iconeLink" src="/resto/imagens/gitlab.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<!-- Vendor JS Files -->
+
+<!-- Template Main JS File -->
+<script src="/resto/hehe.js"></script>
+
+</html>

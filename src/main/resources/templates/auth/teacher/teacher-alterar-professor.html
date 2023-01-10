@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang=”pt-br” xmlns:th="http://www.thymeleaf.org">
+<title>Estudantes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="../../../static/resto/style.css">
+<div th:replace="fragments/links-referencia-hehe :: links"></div>
+
+<body>
+    <div th:replace="fragments/navbar-hehe :: navbar"></div>
+
+    <div id="main" th:fragment="main">
+        <div class="mainDentroMain">
+
+            <div class="tituloMain">Editar Perfil</div>
+
+            <div class="perfilEstudante">
+
+                <div class="edicao">
+                    <form th:action="@{/professor/editar/{id}(id=${professor.id})}" th:object="${professor}"
+                        method="post">
+
+                        <div class="formEdicao">
+                            <i class="iconesPerfil bi bi-123"></i>
+                            <input class="labelEdicao form-control" type="text" id="siape" placeholder="siape"
+                                th:field="*{siape}" readonly />
+                        </div>
+
+                        <div class="formEdicao">
+                            <i class="iconesPerfil bi bi-person"></i>
+                            <input class="labelEdicao form-control" type="text" id="nome" placeholder="Nome"
+                                th:field="*{nome}" />
+                        </div>
+
+                        <div class="formEdicao">
+                            <i class="iconesPerfil bi bi-envelope-at"></i>
+                            <input class="labelEdicao form-control" type="email" id="email" placeholder="Email"
+                                th:field="*{email}" />
+                        </div>
+
+                            <div class="escolherDisc">
+                                <span class="iconesDisc material-symbols-outlined"> book </span>
+                                <div class="disciplinas">
+                                    <th:block th:each="dd : ${listaDisciplinas}">
+                                        <div th:if="${#lists.contains(professor.disciplinas, dd)}"
+                                            class="form-check">
+                                            <input class="" type="checkbox" name="dds" 
+                                                th:value="${dd.id}" checked/><label
+                                                class="inputDiscAlt form-check-label" th:text="${dd.nome}"></label>
+                                        </div>
+                                        <div th:unless="${#lists.contains(professor.disciplinas, dd)}"
+                                            class="form-check">
+                                            <input class="" type="checkbox" name="dds" 
+                                                th:value="${dd.id}" /><label
+                                                class="inputDiscAlt form-check-label" th:text="${dd.nome}"></label>
+                                        </div>
+                                    </th:block>
+
+                                </div>
+
+                                <div class="">
+                                    <span class="mensagem" th:if="${mensagemDisciplina}"
+                                        th:text="${mensagemDisciplina}"></span>
+                                </div>
+                            </div>
+
+                        <div class="formEdicao">
+                            <img class="cadeado" src="/resto/imagens/lock.png"> <i class="iconesPerfil "></i>
+                            <input class="labelEdicao form-control" type="password" id="senha"
+                                placeholder="Digite nova Senha" th:field="*{senha}" />
+                        </div>
+                        <div class="botoes">
+                            <a type="button" class="btn btn-secondary" onclick="history.back()" style="color: white;">Cancelar</a>
+                            <input class="verdola btn" type="submit" value="Alterar" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer-hehe :: footer"></div>
+</body>
+<!-- Vendor JS Files -->
+
+<!-- Template Main JS File -->
+<script src="/resto/hehe.js"></script>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Lista de disciplinas</title>
+
+<link rel="stylesheet" th:href="@{/bootstrap-5.2.0-dist/css/bootstrap.min.css}">
+<script th:src="@{/jquery-3.6.0-dist/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/bootstrap-5.2.0-dist/js/bootstrap.min.js}"></script>
+
+</head>
+<div th:replace="auth/auth-generica-nav :: navGenerica"></div>
+<div class="container">
+  <div class="row">
+  	
+
+    <div class="col">
+    	<h1>Lista de disciplinas</h1>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Descrição</th>
+				<th>Ementa</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${disciplinas.empty}">
+				<td colspan="3">nenhuma disciplina cadastrada</td>
+			</tr>
+			<tr th:each="disciplina : ${disciplinas}">
+				<td><span th:text="${disciplina.nome}"> Nome </span></td>
+                <td><span th:text="${disciplina.descricao}"> Descrição </span></td>
+				<td><span th:text="${disciplina.ementa}"> Ementa </span></td>
+			</tr>
+		</tbody>
+	</table>
+    </div>
+    
+  </div>
+</div>
+
+	
+</body>
+</html>

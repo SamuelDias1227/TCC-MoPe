@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>MoPe</title>
+
+	<div th:replace="fragments/links-referencia-hehe :: links"></div>
+
+
+	<style>
+		.mensagem {
+			color: red;
+		}
+
+		.inputId {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div th:replace="fragments/navbar-hehe :: navbar"></div>
+
+	<div id="main" th:fragment="main">
+		<div class="mainDentroMain">
+
+			<div class="tituloMain">Cadastro de Horarios</div>
+
+			<div class="msgInteiro">
+				<div class="alert alert-success alert-dismissible fade show msgAcerto" th:if="${mensagem}">
+					<button type="button" class="xPraSair bi bi-x" data-bs-dismiss="alert"></button>
+					<span th:text="${mensagem}"></span>
+				</div>
+			</div>
+
+			<div class="maiorDasDiv">
+
+				<form action="#" th:action="@{/horario/salvar/{id}(id=${#authentication.getPrincipal().getId()})}"
+					th:object="${horario}" method="post">
+
+					<div class="formEdicao inputId">
+						<input class="form-control c" type="text" th:field="*{id}" placeholder="id">
+					</div>
+
+					<div class="criaHorario">
+						<i class="iconesPerfil bi bi-calendar2-plus"></i>
+						<input class="form-control labelCria" type="text" th:field="*{horarioInicio}"
+							placeholder="Horarios de inicio">
+					</div>
+
+					<div class="criaHorario">
+						<i class="iconesPerfil bi bi-calendar2-x"></i>
+						<input class="form-control labelCria" type="text" th:field="*{horarioFinal}"
+							placeholder="Horarios de fim">
+					</div>
+
+					<!-- <div class="criaHorario">
+						<i class="iconesPerfil bi bi-calendar2-day"></i>
+						<input class="form-control labelCria" type="text" th:field="*{dia}" placeholder="Dia">
+					</div> -->
+
+					<div class="criaHorario">
+						<i class="iconesPerfil bi bi-calendar2-day"></i>
+						<select th:field="*{dia}" class="form-select diaSemana">
+							<option value="0" selected>Dia da Semana</option>
+							<option value="Segunda-Feira">Segunda-Feira</option>
+							<option value="Terça-Feira">Terça-Feira</option>
+							<option value="Quarta-Feira">Quarta-Feira</option>
+							<option value="Quinta-Feira">Quinta-Feira</option>
+							<option value="Sexta-Feira">Sexta-Feira</option>
+						</select>
+					</div>
+
+					<div class="criaHorario">
+						<i class="iconesPerfil bi bi-geo-alt"></i>
+						<input class="form-control labelCria" type="text" th:field="*{local}" placeholder="Local">
+					</div>
+
+					<div class="botoes">
+						<a type="button" class="cinzinha btn btn-secondary" onclick="history.back()">Cancelar</a>
+						<input class="btn verdola btn" type="submit" value="Gravar" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div th:replace="fragments/footer-hehe :: footer"></div>
+
+</body>
+
+<script src="/resto/hehe.js"></script>
+
+</html>

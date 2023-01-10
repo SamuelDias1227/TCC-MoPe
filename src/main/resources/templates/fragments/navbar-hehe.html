@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="navBarHehe" th:fragment="navbar">
+
+        <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display: none" id="mySidebar">
+            <button class="botaoMenuFechar" onclick="w3_close()">&times;</button>
+            <a href="https://monkeytype.com/" target="_blank" class="w3-bar-item w3-button ">IFMS</a> 
+            <a href="https://www.flamengo.com.br/" target="_blank" class="w3-bar-item w3-button">Governo</a> 
+            <a href="https://github.com/" target="_blank" class="w3-bar-item w3-button">Github</a>
+            <a href="https://gitlab.com/" target="_blank" class="w3-bar-item w3-button">Gitlab</a>
+        </div>
+
+        <div class="mesmaLinha">
+            <button id="openNav" class="botaoMenu" onclick="w3_open()">
+                <img class="imagemBM" src="/resto/imagens/menu.png">
+            </button>
+
+            <div th:if="${ #authorization.expression('hasAuthority(''PROFESSOR'')')}" class="logo-container">
+                <a class="margemDireita" th:href="@{/disciplina/teacher/listar/{id}(id=${#authentication.getPrincipal().getId()})}"
+                    style="display: flex; color: white; align-items: center;">
+                    <img class="logoImg" src="/resto/imagens/camel.png">
+                    <h1 class="titulo">MoPe</h1>
+                </a>
+            </div>
+
+            <div th:if="${ #authorization.expression('hasAuthority(''MONITOR'')')}" class="logo-container">
+                <a class="margemDireita" th:href="@{/disciplina/teacher/listar/{id}(id=${#authentication.getPrincipal().getId()})}"
+                    style="display: flex; color: white; align-items: center;">
+                    <img class="logoImg" src="/resto/imagens/camel.png">
+                    <h1 class="titulo">MoPe</h1>
+                </a>
+            </div>
+
+            <div th:unless="${ #authorization.expression('hasAuthority(''MONITOR'')')}"
+                th:if="${ #authorization.expression('hasAuthority(''ESTUDANTE'')')}">
+                <div class="logo-container">
+                    <a class="margemDireita" th:href="@{/disciplina/student/listar}"
+                        style="display: flex; color: white; align-items: center;">
+                        <img class="logoImg" src="/resto/imagens/camel.png">
+                        <h1 class="titulo">MoPe</h1>
+                    </a>
+                </div>
+            </div>
+            <div th:replace="auth/auth-nav:: nav"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>

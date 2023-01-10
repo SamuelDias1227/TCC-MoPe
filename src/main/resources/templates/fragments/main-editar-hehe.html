@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main" th:fragment="main">
+        <div class="mainDentroMain">
+
+            <div class="tituloMain">Editar Perfil</div>
+
+            <div class="perfilEstudante">
+
+                <div class="edicao">
+
+                    <form class="formEdicao" for="ra">
+                        <i class="iconesPerfil bi bi-123"></i>
+                        <input class="labelEdicao form-control" type="text" id="ra" placeholder="Ra" />
+                    </form>
+
+                    <form class="formEdicao" for="nome">
+                        <i class="iconesPerfil bi bi-person"></i>
+                        <input class="labelEdicao form-control" type="text" id="nome" placeholder="Nome" />
+                    </form>
+
+                    <form class="formEdicao" for="email">
+                        <i class="iconesPerfil bi bi-envelope-at"></i>
+                        <input class="labelEdicao form-control" type="email" id="email" placeholder="Email" />
+                    </form>
+
+                    <form class="formEdicao" for="turma">
+                        <i class="iconesPerfil bi bi-book"></i>
+                        <input class="labelEdicao form-control" type="text" id="turma" placeholder="Turma" />
+                    </form>
+
+                    <form class="formEdicao" for="senha">
+                        <img class="cadeado" src="/resto/imagens/lock.png"> <i class="iconesPerfil "></i>
+                        <input class="labelEdicao form-control" type="text" id="senha" placeholder="Senha" />
+                    </form>
+
+                </div>
+
+                <div class="botoes">
+                    <button type="button" class="btn btn-secondary">Cancelar</button>
+                    <button type="button" class="verdola btn">Atualizar</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

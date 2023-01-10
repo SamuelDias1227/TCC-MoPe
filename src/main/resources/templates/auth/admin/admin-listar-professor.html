@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Lista de professores</title>
+
+<link rel="stylesheet" th:href="@{/bootstrap-5.2.0-dist/css/bootstrap.min.css}">
+<script th:src="@{/jquery-3.6.0-dist/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/bootstrap-5.2.0-dist/js/bootstrap.min.js}"></script>
+
+</head>
+<div th:replace="auth/auth-generica-nav :: navGenerica"></div>
+<div class="container">
+  <div class="row">
+  	
+    <div class="col">
+    	<h1>Lista de professores</h1>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+                <th>SIAPE</th>
+				<th>Nome</th>
+				<th>Nascimento</th>
+				<th>E-mail</th>
+				<th>Disciplinas</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${professores.empty}">
+				<td colspan="2">nenhum professor cadastrado</td>
+			</tr>
+			<tr th:each="professor : ${professores}">
+                <td><span th:text="${professor.siape}"> SIAPE </span></td>
+				<td><span th:text="${professor.nome}"> Nome </span></td>
+				<td><span th:text="${#dates.format(professor.dataNascimento, 'dd/MM/yyyy')}"> Nascimento </span></td>
+				<td><span th:text="${professor.email}"> E-mail </span></td>
+				<td>
+					<th:block th:each="dd : ${professor.disciplinas}">
+						<span th:text="${dd.nome}"> Disciplinas </span><br/>
+					</th:block>							
+				</td>
+
+                <td>
+					<a class="btn btn-outline-danger btn-sm" 
+					   th:href="@{/professor/admin/apagar/{id}(id=${professor.id})}"
+					   th:data-confirm-delete="|Você gostaria de apagar ${professor.nome}?|"
+  					   onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
+					   Apagar
+					</a>
+				</td>
+				<td>
+					<a class="btn btn-outline-primary btn-sm"
+					th:href="@{/professor/editar/{id}(id=${professor.id})}">
+					Editar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+    </div>
+    
+  </div>
+</div>
+
+	
+</body>
+</html>

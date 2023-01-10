@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main" th:fragment="main">
+        <div class="mainDentroMain">
+
+        <br>
+
+        <div class="tituloMain" th:if="${ #authorization.expression('hasAuthority(''PROFESSOR'')')}">As disciplinas que você ministra</div>
+        <div class="tituloMain" th:if="${ #authorization.expression('hasAuthority(''MONITOR'')')}">As disciplinas que você ministra</div>
+        <div th:unless="${ #authorization.expression('hasAuthority(''MONITOR'')')}">
+        	<div class="tituloMain" th:if="${ #authorization.expression('hasAuthority(''ESTUDANTE'')')}">Disciplinas</div>
+        </div>
+        <br>
+
+        <div class="linha1">
+
+            <div class="setasContainer">
+                <i onclick="history.back()" class="iconesClicaveis seta esquerda bi bi-arrow-left-square"></i>
+                <i onclick="history.forward()" class="iconesClicaveis seta direita bi bi-arrow-right-square"></i>
+            </div>
+            <div class="parte2">
+                <form class="barraPesquisa">
+                    <input class="form-control input-color" type="search" placeholder="Pesquisar" aria-label="Pesquisar"
+                        style="width: 400px;">
+                    <i class="inputBotaoPesquisa bi bi-search"></i>
+                </form>
+            </div>
+
+        </div>
+        <div class="containerP">
+            <div class="card2" th:each="disciplina : ${disciplinas}"> <img
+                    class="imagemCard" src="/resto/imagens/portugues.jpg">
+                <a class="card-body" th:if="${ #authorization.expression('hasAuthority(''ADMIN'')')}" href="/horario/admin/listar" >
+                    <h5 class="card-title" th:text="${disciplina.nome}"></h5>
+                    <p class="descricaoCard" th:text="${disciplina.descricao}"> </p> 
+                </a>
+
+                <a class="card-body" th:if="${ #authorization.expression('hasAuthority(''PROFESSOR'')')}" th:href="@{/horario/teacher/listar/{id}(id=${#authentication.getPrincipal().getId()})}" >
+                    <h5 class="card-title" th:text="${disciplina.nome}"></h5>
+                    <p class="descricaoCard" th:text="${disciplina.descricao}"> </p> 
+                </a>
+                
+                <a class="card-body" th:if="${ #authorization.expression('hasAuthority(''MONITOR'')')}" th:href="@{/horario/monitor/listar/{id}(id=${#authentication.getPrincipal().getId()})}" >
+                    <h5 class="card-title" th:text="${disciplina.nome}"></h5>
+                    <p class="descricaoCard" th:text="${disciplina.descricao}"> </p> 
+                </a>
+                <div
+					th:unless="${ #authorization.expression('hasAuthority(''MONITOR'')')}">
+					<a
+						th:if="${ #authorization.expression('hasAuthority(''ESTUDANTE'')')}" th:href="@{/horario/student/listar/{id}(id=${disciplina.id})}">
+						<h5 class="card-title" th:text="${disciplina.nome}"></h5>
+                    	<p class="descricaoCard" th:text="${disciplina.descricao}"> </p>
+					</a>
+				</div>
+            </div>
+        </div>
+        
+        <div th:if="${ #authorization.expression('hasAuthority(''MONITOR'')')}" class="tituloMain">Todas Disciplinas</div>
+        
+        <div class="containerP">
+            <div class="card2" th:each="umaDisciplina : ${todasDisciplinas}"> <img
+                    class="imagemCard" src="/resto/imagens/portugues.jpg">
+                <a class="card-body" th:if="${ #authorization.expression('hasAuthority(''ESTUDANTE'')')}" th:href="@{/horario/student/listar/{id}(id=${umaDisciplina.id})}" >
+                    <h5 class="card-title" th:text="${umaDisciplina.nome}"></h5>
+                    <p class="descricaoCard" th:text="${umaDisciplina.descricao}"> </p> 
+                </a>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</body>
+<script src="../../static/resto/hehe.js"></script>
+
+</html>

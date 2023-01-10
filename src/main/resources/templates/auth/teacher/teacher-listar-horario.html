@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang=”pt-br” xmlns:th="http://www.thymeleaf.org">
+<title>Listar horário</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div th:replace="fragments/links-referencia-hehe :: links"></div>
+
+<body>
+	<div th:replace="fragments/navbar-hehe :: navbar"></div>
+	<div class="container" id="main">
+		<div class="mainDentroMainHorario">
+
+			<div class="">
+				<div class="primeiraLinhaCriarHorario">
+					<h1 class="tituloCriarHorario">Seus horários informados</h1>
+					<a class="criarHorario bi bi-clipboard-check"
+						th:href="@{/presenca/teacher/listar/{idLog}(idLog=${#authentication.getPrincipal().getId()})}"></a>
+					<a class="criarHorario bi bi-calendar-plus" href="/horario/novo"></a>
+				</div>
+
+				<div class="divAntesTabela">
+					<div class="ficarNoMeio">
+						<table class="tabelaHorarios table table-borderless">
+							<thead class="thead border">
+								<tr>
+									<th class="tituloTabela">Horário de inico</th>
+									<th class="tituloTabela">Horário de fim</th>
+									<th class="tituloTabela">Dia</th>
+									<th class="tituloTabela">Local</th>
+									<th colspan="2" class="tituloTabela">Gereciamento</th>
+								</tr>
+							</thead>
+							<tbody class="tbody border">
+								<tr th:if="${horarios.empty}">
+									<td colspan="5">Nenhum horário cadastrado</td>
+								</tr>
+								<tr th:each="horario : ${horarios}">
+									<td><span class="classeSpan" th:text="${horario.horarioInicio}"> Horário de inicio
+										</span></td>
+									<td><span class="classeSpan" th:text="${horario.horarioFinal}"> Horário de fim
+										</span></td>
+									<td><span class="classeSpan" th:text="${horario.dia}"> Dia </span></td>
+									<td><span class="classeSpan" th:text="${horario.local}"> Local </span></td>
+									<td>
+										<a class="apagar bi bi-x-circle"
+											th:href="@{/horario/teacher/apagar/{idHorario}/{idLog}(idHorario=${horario.id}, idLog=${#authentication.getPrincipal().getId()})}"
+											th:data-confirm-delete="|Você gostaria de apagar o horario que vai das ${horario.horarioInicio} às ${horario.horarioFinal}?|"
+											onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
+										</a>
+									</td>
+									<td>
+										<a class="editar bi bi-pencil-square"
+											th:href="@{/horario/editar/{id}(id=${horario.id})}"></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+<script src="/resto/hehe.js"></script>
+
+</html>

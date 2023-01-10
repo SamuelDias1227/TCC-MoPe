@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+	<div th:fragment="navGenerica">
+
+		<div th:if="${ #authorization.expression('hasAuthority(''ADMIN'')')}">
+			<div th:replace="auth/admin/admin-nav :: nav"></div>
+		</div>
+		<div
+			th:unless="${ #authorization.expression('hasAuthority(''ADMIN'')')}">
+			<div
+				th:if="${ #authorization.expression('hasAuthority(''PROFESSOR'')')}">
+				<div th:replace="auth/teacher/teacher-nav :: nav"></div>
+			</div>
+			<div
+				th:unless="${ #authorization.expression('hasAuthority(''PROFESSOR'')')}">
+				<div
+					th:if="${ #authorization.expression('hasAuthority(''MONITOR'')')}">
+					<div th:replace="auth/teacher/teacher-nav :: nav"></div>
+				</div>
+				<div
+					th:unless="${ #authorization.expression('hasAuthority(''MONITOR'')')}">
+					<div
+						th:if="${ #authorization.expression('hasAuthority(''ESTUDANTE'')')}">
+						<div th:replace="auth/student/student-nav :: nav"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div sec:authorize="!isAuthenticated()">
+			<div th:replace="fragments/publica-nav :: nav"></div>
+		</div>
+	</div>
+</body>
+</html>

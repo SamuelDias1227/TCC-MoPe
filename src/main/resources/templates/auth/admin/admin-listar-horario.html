@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Lista de horarios</title>
+
+<link rel="stylesheet" th:href="@{/bootstrap-5.2.0-dist/css/bootstrap.min.css}">
+<script th:src="@{/jquery-3.6.0-dist/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/bootstrap-5.2.0-dist/js/bootstrap.min.js}"></script>
+
+</head>
+<div th:replace="auth/auth-generica-nav :: navGenerica"></div>
+<div class="container">
+  <div class="row">
+  	
+    <div class="col">
+    	<h1>Lista de horarios</h1>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+                <th>ID</th>
+				<th>Horario de inico</th>
+				<th>Horario de fim</th>
+				<th>Dia</th>
+                <th>Local</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${horarios.empty}">
+				<td colspan="2">Nenhum horário cadastrado</td>
+			</tr>
+			<tr th:each="horario : ${horarios}">
+                <td><span th:text="${horario.id}"> Id </span></td>
+				<td><span th:text="${horario.horarioInicio}"> Horario de inicio </span></td>
+                <td><span th:text="${horario.horarioFinal}"> Horario de fim </span></td>
+				<td><span th:text="${horario.dia}"> Dia </span></td>
+                <td><span th:text="${horario.local}"> Local </span></td>
+                <td>
+					<a class="btn btn-outline-danger btn-sm" 
+					   th:href="@{/horario/admin/apagar/{id}(id=${horario.id})}"
+					   th:data-confirm-delete="|Você gostaria de apagar o horario que vai das ${horario.horarioInicio} às ${horario.horarioFinal}?|"
+  					   onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
+					   Apagar
+					</a>
+				</td>
+				<td>
+					<a class="btn btn-outline-primary btn-sm"
+					th:href="@{/horario/editar/{id}(id=${horario.id})}">
+					Editar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+    </div>
+    
+  </div>
+</div>
+
+	
+</body>
+</html>

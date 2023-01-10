@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Lista de horarios</title>
+
+	<div th:replace="fragments/links-referencia-hehe :: links"></div>
+	
+
+</head>
+
+<body>
+	<div th:replace="fragments/navbar-hehe :: navbar"></div>
+	<div class="container" id="main">
+		<div class="mainDentroMain">
+
+			<div class="col">
+
+				<div class="parte2" style="margin-top: 10px; margin-bottom: 30px;">
+					<form style="margin-top: 30px;" class="barraPesquisa">
+						<input id="inputPesquisa" class="form-control input-color" type="search" placeholder="Pesquisar"
+							aria-label="Pesquisar" style="width: 400px;">
+						<i class="inputBotaoPesquisa bi bi-search"></i>
+					</form>
+					<select style="margin-top: 30px;" id="selectFiltro" class="filtro" aria-label="Filtro">
+						<option value="1">Sem filtro</option>
+						<option value="2">Professores</option>
+						<option value="3">Monitores</option>
+					</select>
+				</div>
+
+				<h1 id="h1Permanencia" class="listar">Lista de permanências</h1>
+
+				<div class="divAntesTabela">
+					<table id="tabela-fileira" class="tabelaHorarios table table-borderless">
+						<div id="divPermanenciasProfessor">
+							<thead id="theadPermanenciasProfessor" class="thead border">
+								<tr>
+									<th class="tituloTabela">Horario de inico</th>
+									<th class="tituloTabela">Horario de fim</th>
+									<th class="tituloTabela">Dia</th>
+									<th class="tituloTabela">Local</th>
+									<th class="tituloTabela">Professor</th>
+									<th class="tituloTabela">Confirmação</th>
+								</tr>
+							</thead>
+							<tbody id="tboryPermanenciasProfessor" class="tbody border">
+								<tr th:if="${horarios.empty}">
+									<td colspan="7">Nenhum horário de permanência cadastro</td>
+								</tr>
+
+								<tr class="trDaTabela" th:each="horario : ${horarios}">
+									<td><span class="classeSpan" th:text="${horario.horarioInicio}"> Horário de inicio
+										</span></td>
+									<td><span class="classeSpan" th:text="${horario.horarioFinal}"> Horário de fim </span>
+									</td>
+									<td><span class="classeSpan diaProfessor" th:text="${horario.dia}"> Dia </span></td>
+									<td><span class="classeSpan" th:text="${horario.local}"> Local </span></td>
+									<td><span class="nomeProfessor" th:text="${horario.professor.nome}"> Professor </span></td>
+									<td>
+									<a class="checar bi bi-check-circle"
+									th:href="@{/presenca/salvar/{idHorario}/{idLog}(idHorario=${horario.id}, idLog=${#authentication.getPrincipal().getId()})}"
+									th:data-confirm-delete="|Você gostaria de confirmar que irá comparecer no horario de permanência que vai das ${horario.horarioInicio} às ${horario.horarioFinal}?|"
+									onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
+									</a>
+								</td>
+								</tr>
+							</tbody>
+						</div>
+					</table>
+					<h1 id="h1Monitoria" class="listar">Lista de monitorias</h1>
+					<table id="tabela-monitoria-fileira" class="tabelaHorarios table table-borderless">
+						<div id="divPermanenciasMonitor">
+							<thead id="theadPermanenciasMonitor" class="thead border">
+								<tr>
+									<th class="tituloTabela">Horário de inico</th>
+									<th class="tituloTabela">Horário de fim</th>
+									<th class="tituloTabela">Dia</th>
+									<th class="tituloTabela">Local</th>
+									<th class="tituloTabela">Monitor</th>
+									<th class="tituloTabela">Confirmação</th>
+								</tr>
+							</thead>
+							<tbody id="tboryPermanenciasMonitor" class="tbody border">
+								<tr th:if="${hors.empty}">
+									<td colspan="7">Nenhum horário de monitoria cadastrado</td>
+								</tr>
+
+								<tr th:each="hor : ${hors}">
+									<td><span class="classeSpan" th:text="${hor.horarioInicio}"> Horário de inicio
+										</span></td>
+									<td><span class="classeSpan" th:text="${hor.horarioFinal}"> Horário de fim </span>
+									</td>
+									<td><span class="classeSpan diaMonitor" th:text="${hor.dia}"> Dia </span></td>
+									<td><span class="classeSpan" th:text="${hor.local}"> Local </span></td>
+									<td><span class="nomeMonitor" th:text="${hor.monitor.estudante.nome}"> Monitor </span></td>
+									<td>
+										<a class="checar bi bi-check-circle"
+										th:href="@{/presenca/salvar/presenca/monitor/{idHorario}/{idLog}(idHorario=${hor.id}, idLog=${#authentication.getPrincipal().getId()})}"
+										th:data-confirm-delete="|Você gostaria de confirmar que irá comparecer no horario de permanência que vai das ${hor.horarioInicio} às ${hor.horarioFinal}?|"
+										onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</div>
+					</table>
+				</div>
+
+
+
+			</div>
+		</div>
+
+</body>
+<script src="/resto/hehe.js"></script>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Lista de estudantes</title>
+
+<link rel="stylesheet" th:href="@{/bootstrap-5.2.0-dist/css/bootstrap.min.css}">
+<script th:src="@{/jquery-3.6.0-dist/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/bootstrap-5.2.0-dist/js/bootstrap.min.js}"></script>
+
+</head>
+<div th:replace="auth/auth-generica-nav :: navGenerica"></div>
+<div class="container">
+  <div class="row">
+  	
+    <div class="col">
+    	<h1>Lista de estudantes</h1>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+                <th>RA</th>
+				<th>Nome</th>
+				<th>Turma</th>
+				<th>Nascimento</th>
+				<th>E-mail</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${estudantes.empty}">
+				<td colspan="2">nenhum estudante cadastrado</td>
+			</tr>
+			<tr th:each="estudante : ${estudantes}">
+                <td><span th:text="${estudante.ra}"> RA </span></td>
+				<td><span th:text="${estudante.nome}"> Nome </span></td>
+				<td><span th:text="${estudante.turma}"> Turma </span></td>
+				<td><span th:text="${#dates.format(estudante.dataNascimento, 'dd/MM/yyyy')}"> Nascimento </span></td>
+				<td><span th:text="${estudante.email}"> E-mail </span></td>
+                <td>
+					<a class="btn btn-outline-danger btn-sm" 
+					   th:href="@{/estudante/admin/apagar/{id}(id=${estudante.id})}"
+					   th:data-confirm-delete="|Você gostaria de apagar ${estudante.nome}?|"
+  					   onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
+					   Apagar
+					</a>
+				</td>
+				<td>
+					<a class="btn btn-outline-primary btn-sm"
+					th:href="@{/estudante/editar/{id}(id=${estudante.id})}">
+					Editar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+    </div>
+    
+  </div>
+</div>
+
+	
+</body>
+</html>

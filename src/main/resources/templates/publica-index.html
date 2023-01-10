@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<!--  <link rel="icon" href="/src/main/resources/static/resto/imagens/camelIcon.ico" type="image/x-icon">-->
+<div th:replace="fragments/links-referencia-hehe :: links"></div>
+
+</head>
+
+<body class="mainCadastro">
+
+    <div class="parteVerde">
+        <div class="ifLogoDiv">
+            <img class="ifLogo" src="/resto/imagens/ifmsLogo.png">
+        </div>
+        <div class="tituloParteVerde">
+            Bem Vindo de Volta!
+        </div>
+        <div class="botaoLogin">
+            <a type="button" class="btnRedundancia btnEntrar btn btn-light" href="/login">Entrar</a>
+        </div>
+
+    </div>
+
+
+    <div class="parteBranca">
+        <div class="solDiv">
+            <img class="solImg" src="/resto/imagens/sol.png">
+        </div>
+        
+        <div class="tituloParteBranca">
+            Criar uma Conta
+        </div>
+
+
+        <div class="opcoes">
+            <div class="opDentroOp">
+                <span class="iconesLogin material-symbols-outlined">
+                    menu_book
+                </span>
+                <div class="copa">
+                	<a class="op labelEdicao form-control" href="/estudante/novo">
+                    	Estudante
+                	</a>
+                	<i class="labelSeta bi-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="opDentroOp">
+                <i class="iconesLogin bi bi-mortarboard"></i>
+                <div class="copa">
+                	 <a class="op labelEdicao form-control" href="/professor/novo">
+                    Professor
+                </a>
+                <i class="labelSeta bi-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="opDentroOp">
+                <i class="iconesLogin bi bi-pen"></i>
+                <div class="copa">
+                	 <a class="op labelEdicao form-control" href="/monitor/novo">
+                    Monitor
+                </a>
+                <i class="labelSeta bi-chevron-right"></i>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+<!-- Vendor JS Files -->
+
+<!-- Template Main JS File -->
+<script src="/resto/hehe.js"></script>
+
+</html>

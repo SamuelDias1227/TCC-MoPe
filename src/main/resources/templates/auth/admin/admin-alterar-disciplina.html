@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Alterar disciplina</title>
+
+<link rel="stylesheet" th:href="@{/bootstrap-5.2.0-dist/css/bootstrap.min.css}">
+<script th:src="@{/jquery-3.6.0-dist/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/bootstrap-5.2.0-dist/js/bootstrap.min.js}"></script>
+
+
+
+<style>
+.mensagem {
+  color: red;
+}
+</style>
+</head>
+<body>
+<div th:replace="auth/auth-generica-nav :: navGenerica"></div>
+<div class="container">
+  <div class="row">  	
+    <div class="col">
+    	<h2>Alterar disciplina</h2> 
+		<form th:action="@{/disciplina/editar/{id}(id=${disciplina.id})}" th:object="${disciplina}" method="post">
+			  
+			<div class="row mb-3">
+			    <label class="col-sm-1 col-form-label">Nome:</label>
+			    <div class="col-sm-5">
+			    	<input class="form-control" type="text" th:field="*{nome}"> 
+			    </div>
+			    <div class="col-sm-5"> 
+			    	<span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			    </div>				
+			</div>
+			
+			
+			<div class="row mb-3">
+			    <label class="col-sm-1 col-form-label">Descrição:</label>
+			    <div class="col-sm-3">
+			    	<input class="form-control" type="text" th:field="*{descricao}"> 
+			    </div>
+				<div class="col-sm-5"> 
+			    	<span class="mensagem" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></span>
+			    </div>
+			</div>			
+			
+			<div class="row mb-3">
+			    <label class="col-sm-1 col-form-label">Ementa:</label>
+			    <div class="col-sm-2">
+			    	<input class="form-control" type="text" th:field="*{ementa}"> 
+			    </div>
+				<div class="col-sm-5"> 
+			    	<span class="mensagem" th:if="${#fields.hasErrors('ementa')}" th:errors="*{ementa}"></span>
+			    </div>
+			</div>
+			
+			<input  class="btn btn-primary" type="submit" value="Alterar"/>
+		</form>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

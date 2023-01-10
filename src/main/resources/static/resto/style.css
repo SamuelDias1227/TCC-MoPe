@@ -1,0 +1,1240 @@
+/**
+* Template Name: NiceAdmin - v2.3.1
+* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@294&family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+:root {
+  scroll-behavior: smooth;
+}
+
+html{
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  /*  background: #f6f9ff;*/
+  color: #444444;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+a {
+  color: #4154f1;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #4154f1;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nunito", sans-serif;
+}
+
+simple::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+simple::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+simple::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/*--------------------------------------------------------------
+# cadastro
+--------------------------------------------------------------*/
+
+.mainCadastro{
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.parteVerde{
+  background-color: #33DA6D;
+  width: 33%;
+  height: 100%;
+}
+
+.ifLogoDiv{
+  margin-top: 30px;
+  text-align: center;
+}
+
+.ifLogo{
+  margin-top: 20px;
+  width: 125px;
+}
+
+.tituloParteVerde{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+}
+
+.botaoLogin{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.btnRedundancia{
+  border-radius: 11px !important;
+}
+
+.btnEntrar{
+  width: 150px;
+}
+
+.parteBranca{
+  width: 67%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.solDiv{
+  display: flex;
+  justify-content: end;
+}
+
+.solImg{
+  width: 95px;
+  height: 85px;
+}
+
+.tituloParteBranca{
+  margin-top: 2vH;
+  margin-bottom: 10vH;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: rgb(0, 0, 0);
+}
+
+.iconesLogin{
+  font-size: 40px;
+  color: #000;
+}
+
+.opcoes{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 200px;
+}
+
+.copa{
+	display: flex;
+	width: 700px;
+	align-items: center;
+}
+
+.copa:hover{
+	border-color: #5B6BF7;
+	color: #5B6BF7;
+	text-decoration: none;
+}
+
+.op{
+  margin: 10px 0 10px 10px;
+  border: 1px solid;
+  width: 70% !important;
+  padding-bottom: 33px !important;
+  background-color: #f3f3f3 !important;
+  color: black;
+}
+
+.opDentroOp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0 10px 10px;
+}
+
+.labelSeta{
+  margin-left: -40px;
+  width: 1px !important;
+}
+
+/*--------------------------------------------------------------
+  # cadastro estudante
+  --------------------------------------------------------------*/
+.cad{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  margin-top: -30px;
+}
+
+.labelLogin{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 600px !important;
+  font-size: large;
+}
+
+.cinzinha{
+  color: white !important;
+}
+
+
+
+.verdola{
+  background-color: #33DA6D;
+  color: white; 
+}
+
+.verdola:hover{
+  background-color: #2ebb4c;
+  color: white !important;
+}
+
+
+/*--------------------------------------------------------------
+ # cadastro professor e monitor
+ --------------------------------------------------------------*/
+
+  .escolherDisc{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .iconesDisc{
+    font-size: 30px;
+    color: black;
+  }
+
+  .selecionadas{
+    margin-left: 10px;
+  }
+
+ .disciplinas{
+  overflow-y: auto;
+  text-overflow: ellipsis;
+  /* display: -webkit-box; */
+  -webkit-line-clamp: 7;
+  /* number of lines to show */
+  line-clamp: 7;
+  -webkit-box-orient: vertical;
+  display: block;
+  margin-left: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.264);
+  border-radius: 5px;
+  width: 560px;
+  height: 100px;
+ }
+
+ .disciplinas2{
+  overflow-y: auto;
+  text-overflow: ellipsis;
+  /* display: -webkit-box; */
+  -webkit-line-clamp: 7;
+  /* number of lines to show */
+  line-clamp: 7;
+  -webkit-box-orient: vertical;
+  display: block;
+  margin-left: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.264);
+  border-radius: 5px;
+  width: 535px;
+  height: 100px;
+ }
+
+
+
+/*--------------------------------------------------------------
+ # login 
+ --------------------------------------------------------------*/
+.aoRedor{
+	background-color: rgba(232, 232, 232, 0.56);	
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loginMain{
+  margin-top: -40px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
+}
+
+.tituloLogin{
+	font-size: xx-large;
+	text-align: center;	
+	width: 90%;	
+	border-bottom: 2px solid;
+	border-color: #33DA6D;
+	color: #33DA6D;
+	margin-bottom: 20px;
+}
+
+.opLogin{
+	margin: 15px 0 15px 0px;
+	display: flex;
+}
+
+@media (max-width: 1260px) {
+ 	 .labelLogin{
+ 	 	display: flex;
+	    flex-direction: row;
+	    justify-content: center;
+	    align-items: center;
+	    width: 400px !important;
+	    font-size: large;
+ 	 }
+}
+
+@media (max-width: 960px) {
+ 	 .labelLogin{
+ 	 	display: flex;
+	    flex-direction: row;
+	    justify-content: center;
+	    align-items: center;
+	    width: 200px !important;
+	    font-size: large;
+ 	 }
+}
+
+@media (max-width: 960px) {
+ 	 .labelLogin{
+ 	 	display: flex;
+	    flex-direction: row;
+	    justify-content: center;
+	    align-items: center;
+	    width: 100px !important;
+	    font-size: large;
+ 	 }
+}
+
+.fundoSlk{
+	background-color: white;
+	width: 50%;
+	height: 52ex;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 3px solid;
+	border-radius: 5px;	
+}
+
+.loginFooter{
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: -50px;
+	border-top: 2px solid;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.loginFooterTexto{
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.botaoLogin{
+	margin-top: 10px;
+	margin-right: 5px
+}
+
+.erroVermelho{
+	position: relative;
+}
+
+.msgInteiro{
+  display: flex;
+  justify-content: center;
+}
+
+.msgErro{
+  margin-top: 20px;
+  padding-bottom: -20px;
+  display: flex;
+  align-items: center;
+}
+
+.msgAcerto{
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
+
+.xPraSair{
+  background: none;
+  border: 0px;
+}
+
+
+.xPraSair:hover{
+  cursor: pointer;
+}
+
+/*--------------------------------------------------------------
+  # navbar
+  --------------------------------------------------------------*/
+
+  .navBarHehe {
+    position: absolute !important;
+    display: block;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    background-color: #33DA6D;
+    display: flex;
+    box-shadow: 0 .5rem 3rem rgba(7, 5, 5, 0.175);
+  }
+  
+  .botaoMenu {
+    border: none;
+    display: inline-block;
+    padding: 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .botaoMenu:hover {
+    transition: 0.3s;
+  }
+  
+  .botaoMenu .imagemBM {
+    display: flex;
+    min-width: 60px;
+    max-width: 65px;
+  }
+  
+  .botaoMenuFechar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 8px 16px;
+    border: none;
+    white-space: normal;
+  }
+
+  .botaoMenuFechar:hover {
+    background-color: #808080;
+  }
+  
+  .tituloMain {
+  padding-top: 10px;
+  margin-left: 2%;
+  font-style: normal;
+  font-weight: 300;
+  font-size: xx-large;
+  font-family: 'Alexandria', sans-serif;
+  text-align: center;
+  }
+  
+  .tituloEditar {
+    text-align: center;
+    font-style: normal;
+    font-weight: 300;
+    font-size: xx-large;
+    }
+  
+  .mesmaLinha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .margemDireita{
+    margin-right: 100px;
+  }
+  
+  .logo-container {
+    display: flex;
+    color: white;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  img.logoImg {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    transform: scaleX(-1);
+  }
+  
+  .imgSideBar {
+    height: 20px;
+    width: 20px;
+  }
+  
+  .icones{
+    /* margin-top: 5px; */
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+    gap: 20px;
+  }
+
+  .iconesVertical{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .editarIcon{
+    color: rgba(0, 0, 255, 0.56);
+  }
+
+  .editarIcon:hover{
+    color: blue;
+    transition: 0.2s;
+  }
+
+  .sairIcon{
+    margin-right: 10px;
+    color: rgba(255, 0, 0, 0.637);
+  }
+
+  .sairIcon:hover{
+    color: red;
+    transition: 0.2s;
+  }
+
+/*--------------------------------------------------------------
+  # Main
+  --------------------------------------------------------------*/
+div#main {
+  padding-top: 40px;
+  padding-left: min(5px);
+  padding-left: 20px;
+  background-color: rgb(250, 250, 250);
+  border-radius: 10px;
+}
+
+.mainDentroMain{
+  margin-top: 15px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0, .09);
+  padding-bottom: 30px;
+}
+
+.mainDentroMainHorario{
+  margin-top: 35px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0, .09);
+  padding-bottom: 30px;
+}
+
+/* Main */
+.preCard {
+  display: flex;
+  flex-direction: row;
+  /* 	align-items: center; */
+}
+
+.pgFuncionar {
+  display: flex;
+}
+
+.containerP {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+} 
+
+@media (max-width: 950px) {
+  .containerP {
+    display: flex;
+  	flex-wrap: wrap;
+  	flex-direction: row;
+  	justify-content: center;
+  	
+  }
+  
+  .card2{
+  	 overflow-y: auto;
+	  text-overflow: ellipsis;
+	  /* display: -webkit-box; */
+	  -webkit-line-clamp: 7;
+	  /* number of lines to show */
+	  line-clamp: 7;
+	  -webkit-box-orient: vertical;
+	  text-align: left;
+	  margin: 20px 55px 20px 55px !important;
+	  border: none;
+	  border-radius: 5px;
+	  border-style: solid;
+	  border-width: 2px;
+	  margin-right: 18px;
+	  box-shadow: 0px 0 5px rgba(1, 41, 112, 0.1);
+	  color: #000;
+  }
+}
+
+@media (max-width: 870px) {
+  .containerP {
+    display: flex;
+  	flex-wrap: wrap;
+  	flex-direction: row;
+  	justify-content: center;
+  	
+  }
+  
+  .card2{
+  	 overflow-y: auto;
+	  text-overflow: ellipsis;
+	  /* display: -webkit-box; */
+	  -webkit-line-clamp: 7;
+	  /* number of lines to show */
+	  line-clamp: 7;
+	  -webkit-box-orient: vertical;
+	  text-align: left;
+	  
+	  margin: 20px 100px 20px 100px !important;
+	  border: none;
+	  border-radius: 5px;
+	  border-style: solid;
+	  border-width: 2px;
+	  margin-right: 18px;
+	  box-shadow: 0px 0 5px rgba(1, 41, 112, 0.1);
+	  color: #000;
+  }
+}
+
+
+#main {
+  margin-top: 50px;
+  padding: 20px 30px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 1199px) {
+  #main {
+    padding: 20px;
+  }
+}
+
+.linha1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 20px;
+}
+
+.bi {
+  font-size: 40px;
+}
+
+.iconesClicaveis:hover{
+  cursor: pointer;
+}
+
+.setasContainer{
+  /* margin-top: 5px; */
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+  margin-left: 30px;
+  gap: 20px;
+}
+.listar{
+  padding-top: 10px;
+  font-family: 'Alexandria', sans-serif;
+}
+
+.parte2{
+  margin-right: 30px;
+  display: flex;
+  justify-content: end;
+}
+
+.descricaoCard{
+  text-align: center;
+  font-size: medium;
+  color: #000;
+}
+
+/*--------------------------------------------------------------
+  # Pesquisar ou Buscar
+  --------------------------------------------------------------*/
+
+.barraPesquisa{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputBotaoPesquisa{
+  font-size: 25px !important;
+  width: 22px;
+  border-color: grey;
+  margin-left: -32px;
+}
+
+.inputBotaoPesquisa:hover{
+  cursor: pointer;
+}
+
+.input-color{
+  border-color: #072049 !important;
+}
+
+.input-color:focus {
+  border-color: rgba(0,123,255) !important;
+  transition: 0.3s;
+}
+
+/*--------------------------------------------------------------
+  # filtro
+  --------------------------------------------------------------*/
+.filtro{
+  margin-left: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: flex;
+  width: 200px;
+  border-color: #072049 !important;
+}
+
+.filtro:hover{
+  border-color: #072049;  
+  transition: 0.3s; 
+}
+
+
+/*--------------------------------------------------------------
+  # informações das matérias
+  --------------------------------------------------------------*/
+.informacoes{
+  display: flex;
+  flex-direction: row;
+  margin-left: 60px;
+  width: 90%;
+  border: 1px solid;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Alexandria', sans-serif;
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.dia{
+  margin-left: 30px;
+  width: 150px;
+}
+
+.hora{
+  width: 150px;
+}
+
+.local{
+  width: 150px;
+}
+
+.ministrante{
+  width: 250px;
+}
+
+.confirmacao{
+  margin-right: 30px;
+}
+
+.voltarHorario{
+  color: rgba(86, 86, 86, 0.551);
+  margin-right: 30px;
+}
+
+.voltarHorario:hover{
+  color: rgb(86, 86, 86);
+  margin-right: 30px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#aChecado{
+  color: grey;
+}
+
+
+#checado{
+  color: rgb(128, 128, 128);
+}
+
+/*--------------------------------------------------------------
+  # listar PE ou monitoria
+  --------------------------------------------------------------*/
+#divPermanenciasMonitor{
+  margin-top: 20px;
+}
+
+.ficarNoMeio{
+  display: flex;
+  justify-content: center;
+}
+
+/*--------------------------------------------------------------
+  # edicao
+  --------------------------------------------------------------*/
+
+.perfilEstudante{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.naoEdicao{
+  display: flex;
+  align-items: center;
+  font-size: x-large;
+  margin-left: 100px;
+  flex-direction: column;
+}
+
+.edicao{
+  display: flex;
+  align-items: center;
+  font-size: x-large;
+  margin-left: 100px;
+  flex-direction: column;
+}
+
+.formEdicao{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 600px !important;
+  font-size: large;
+}
+
+.iconesPerfil{
+  color: #000;
+  margin-right: 10px;
+  font-size: xx-large;
+}
+
+.labelEdicao{
+  font-size: large !important;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.cadeado{
+  width: 32px;
+}
+
+.botoes{
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+/*--------------------------------------------------------------
+  # criar horário PE e Monitoria
+  --------------------------------------------------------------*/
+
+  .primeiraLinhaCriarHorario{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+  }
+
+  .tituloCriarHorario{
+    font-family: 'Alexandria', sans-serif;
+    margin-left: 30px;
+  }
+
+  .criarHorario{
+    color: rgba(0, 0, 255, 0.551);
+    margin-right: 30px;
+  }
+
+  .divAntesTabela{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tabelaHorarios{
+    margin-top: 10px;
+    text-align: center;
+    width: 95%;
+    
+  }
+
+  .tituloTabela{
+    font-size: large;
+  }
+
+  .table td, .table th {
+    padding: .75rem;
+    vertical-align: middle !important;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .classeSpan{
+    font-size: medium;
+  }
+
+  .apagar{
+    font-size: 30px;
+    color: rgba(255, 0, 0, 0.351);
+  }
+
+  .apagar:hover{
+    color: red;
+    transition: 0.2s;
+  }
+
+  .editar{
+    font-size: 30px;
+    color: rgba(0, 0, 255, 0.551);
+  }
+
+  .editar:hover{
+    color: blue;
+    transition: 0.2s;
+  }
+
+
+/*--------------------------------------------------------------
+  # editar horário PE e Monitoria
+  --------------------------------------------------------------*/
+  .maiorDasDiv{
+    display: flex;
+    justify-content: center;
+  }
+
+  .criaHorario{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .labelCria{
+    width: 500px;
+  }
+
+  .diaSemana{
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    width: 500px;
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    color: #495057;
+  }
+
+/*--------------------------------------------------------------
+  # alterar perfil
+  --------------------------------------------------------------*/
+
+  .inputDiscAlt{
+    font-size: large;
+    
+  }
+
+/*--------------------------------------------------------------
+  # Pa Title
+  --------------------------------------------------------------*/
+.pagetitle {
+  margin-bottom: 10px;
+}
+
+.pagetitle h1 {
+  font-size: 24px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #012970;
+}
+
+/*--------------------------------------------------------------
+  # Back to top button
+  --------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background: #4154f1;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 24px;
+  color: #fff;
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: #6776f4;
+  color: #fff;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------*/
+/* Card */
+.card {
+  margin: 30px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+}
+
+.card2 {
+  overflow-y: auto;
+  text-overflow: ellipsis;
+  /* display: -webkit-box; */
+  -webkit-line-clamp: 7;
+  /* number of lines to show */
+  line-clamp: 7;
+  -webkit-box-orient: vertical;
+  text-align: left;
+  max-width: 20%;
+  margin: 30px;
+  border: none;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
+  margin-right: 18px;
+  box-shadow: 0px 0 5px rgba(1, 41, 112, 0.1);
+  color: #000;
+}
+
+.card2:hover {
+  text-decoration: none;
+  transition: 0.2s;
+  color: #012970;
+}
+
+.imagemCard {
+  height: 55%;
+  width: 100%;
+}
+
+.card-header,
+.card-footer {
+  border-color: #ebeef4;
+  background-color: #fff;
+  color: #798eb3;
+  padding: 15px;
+}
+
+.card-title {
+  padding: 20px 0 15px 0;
+  text-align: center;
+  font-size: x-large;
+  font-weight: 500;
+  color: #012970;
+  font-family: "Poppins", sans-serif;
+}
+
+.card-title span {
+  color: #899bbd;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-body {
+  padding: 0 20px 20px 20px;
+}
+
+.card-img-overlay {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Alerts */
+.alert-heading {
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+}
+
+/* Close Button */
+.btn-close {
+  background-size: 25%;
+}
+
+.btn-close:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+/*--------------------------------------------------------------
+  # Header
+  --------------------------------------------------------------*/
+.logo {
+  line-height: 1;
+}
+
+@media (min-width: 1200px) {
+  .logo {
+    width: 280px;
+  }
+}
+
+.logo img {
+  max-height: 26px;
+  margin-right: 6px;
+}
+
+.logo span {
+  font-size: 26px;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+  font-family: "Nunito", sans-serif;
+}
+
+.titulo {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+
+.sideBarImg {
+  width: 12%;
+  height: 12%;
+  padding-right: 5px;
+}
+
+/*--------------------------------------------------------------
+  # Footer
+  --------------------------------------------------------------*/
+#footer {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 2px solid #000000;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0, .09);
+  background-color: #30a358d2;
+  margin-top: auto;
+}
+
+.copyrightIcon{
+  width: 40px;
+}
+
+.agradecimento{
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: large;
+}
+
+.divulgacao{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pessoa{
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.nome{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.linksDentro{
+  display: flex;
+  align-items: center;
+}
+
+.iconeLink{
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 70px;
+}
+
+.gitHubb{
+  color: #000;
+}
+
+.gitHubb:hover{
+  color: #000;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+}
